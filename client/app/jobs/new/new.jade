@@ -1,0 +1,13 @@
+.wrapper
+  form(name='form', ng-submit='vm.addJob(form)', novalidate='')
+    label Title
+    input(type='text', name='title', ng-model='vm.job.title')
+    label Company
+    input(type='text', name='company', ng-model='vm.job.company')
+    label Description
+    input(type='text', name='desc', ng-model='vm.job.desc')
+    label Url
+    input(type='text', name='url', ng-model='vm.job.url')
+
+    button(type='submit')
+      | Submit

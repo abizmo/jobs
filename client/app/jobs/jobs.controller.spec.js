@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Component: MainComponent', function () {
+describe('Component: JobsComponent', function () {
 
   // load the controller's module
   beforeEach(module('jobsApp'));
 
-  var MainComponent, scope;
+  var JobsComponent, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($componentController, $rootScope) {
     scope = $rootScope.$new();
-    MainComponent = $componentController('MainComponent', {
+    JobsComponent = $componentController('JobsComponent', {
       $scope: scope
     });
   }));

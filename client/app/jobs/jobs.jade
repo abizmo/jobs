@@ -1,0 +1,6 @@
+.wrapper
+  a(href='/jobs/new') New Job
+  .job(ng-repeat='job in vm.jobs')
+    a(href='/jobs/{{ job._id }}')
+      h2.job--title {{ job.title }}
+    p.job--company {{ job.company }}
