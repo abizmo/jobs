@@ -11,5 +11,8 @@ angular.module('jobsApp')
       })
       .when('/jobs/:id', {
         template: '<detail></detail>'
+      })
+      .when('/jobs/:id/edit', {
+        template: '<edit></edit>'
       });
   });

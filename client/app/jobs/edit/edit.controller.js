@@ -1,23 +1,30 @@
 'use strict';
 (function(){
 
-class NewComponent {
-  constructor($http, Auth, $location) {
+class EditComponent {
+  constructor($http, Auth, $location, $routeParams) {
     this.$http = $http;
     this.Auth = Auth;
     this.$location = $location;
     this.job = {};
     this.errors = {};
+    this.$routeParams = $routeParams;
   }
 
-  addJob(form) {
+  $onInit(){
+    this.$http.get('/api/jobs/' + this.$routeParams.id).then(response => {
+      this.job = response.data;
+    });
+  }
+
+  editJob(form) {
     this.submitted = true;
 
     if (form.$valid) {
-      this.$http.post('/api/jobs', this.job)
-      .then(response => {
+      this.$http.put('/api/jobs/' + this.job._id, this.job)
+      .then(() => {
         // Job created, redirect to jobs
-        this.$location.path('/jobs/' + response.data._id);
+        this.$location.path('/jobs/' + this.job._id);
       })
       .catch(err => {
         err = err.data;
@@ -34,9 +41,9 @@ class NewComponent {
 }
 
 angular.module('jobsApp')
-  .component('new', {
-    templateUrl: 'app/jobs/new/new.html',
-    controller: NewComponent,
+  .component('edit', {
+    templateUrl: 'app/jobs/edit/edit.html',
+    controller: EditComponent,
     controllerAs: 'vm'
   });
 

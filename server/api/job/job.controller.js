@@ -61,7 +61,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Jobs
 export function index(req, res) {
-  return Job.find().exec()
+  return Job.find().sort({createAt: -1}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
