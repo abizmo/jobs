@@ -1,6 +1,18 @@
 .wrapper
+  ul
+    li
+      button(ng-click="vm.filterBy('')") All
+    li
+      button(ng-click="vm.filterBy('Full time')") Full time
+    li
+      button(ng-click="vm.filterBy('Partial')") Partial
+    li
+      button(ng-click="vm.filterBy('Freelance')") Freelance
+    li
+      button(ng-click="vm.filterBy('Eventual')") Eventual
+      
   a(href='/jobs/new') New Job
-  .job(ng-repeat='job in vm.jobs')
+  .job(ng-repeat='job in vm.jobs | filter: vm.filter')
     a(href='/jobs/{{ job._id }}')
       h2.job--title {{ job.title }}
     p.job--company {{ job.company }}

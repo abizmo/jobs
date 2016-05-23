@@ -61,14 +61,14 @@ function handleError(res, statusCode) {
 
 // Gets a list of Jobs
 export function index(req, res) {
-  return Job.find().sort({createAt: -1}).exec()
+  return Job.find().populate('_category').sort({createAt: -1}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Job from the DB
 export function show(req, res) {
-  return Job.findById(req.params.id).exec()
+  return Job.findById(req.params.id).populate('_category').exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

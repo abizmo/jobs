@@ -61,14 +61,14 @@ function handleError(res, statusCode) {
 
 // Gets a list of Categorys
 export function index(req, res) {
-  return Category.find().populate('_category').exec()
+  return Category.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Category from the DB
 export function show(req, res) {
-  return Category.findById(req.params.id).populate('_category').exec()
+  return Category.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

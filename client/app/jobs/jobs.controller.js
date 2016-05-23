@@ -2,15 +2,20 @@
 (function(){
 
 class JobsComponent {
-  constructor($http) {
+  constructor ($http) {
     this.jobs = [];
     this.$http = $http;
+    this.filter = '';
   }
 
-  $onInit() {
+  $onInit () {
     this.$http.get('/api/jobs').then(response => {
       this.jobs = response.data;
     });
+  }
+
+  filterBy (filter) {
+    this.filter = filter;
   }
 }
 
