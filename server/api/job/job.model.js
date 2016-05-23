@@ -10,6 +10,10 @@ var JobSchema = new mongoose.Schema({
   createAt: {
     type: Date,
     default: Date.now()
+  },
+  _category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category'
   }
 });
 

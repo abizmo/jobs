@@ -6,6 +6,9 @@
     input(type='text', name='company', ng-model='vm.job.company')
     label Description
     input(type='text', name='desc', ng-model='vm.job.desc')
+    label Category
+    select(name='category', ng-model='vm.job._category')
+      option(ng-repeat='category in vm.categories', value='{{ category._id }}') {{ category.name }}
     label Url
     input(type='text', name='url', ng-model='vm.job.url')
 

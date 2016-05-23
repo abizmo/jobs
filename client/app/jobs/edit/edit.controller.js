@@ -9,11 +9,15 @@ class EditComponent {
     this.job = {};
     this.errors = {};
     this.$routeParams = $routeParams;
+    this.categories = [];
   }
 
   $onInit(){
     this.$http.get('/api/jobs/' + this.$routeParams.id).then(response => {
       this.job = response.data;
+    });
+    this.$http.get('/api/categories').then(response => {
+      this.categories = response.data;
     });
   }
 

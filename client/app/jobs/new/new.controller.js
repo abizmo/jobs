@@ -8,6 +8,15 @@ class NewComponent {
     this.$location = $location;
     this.job = {};
     this.errors = {};
+    this.categories = [];
+  }
+
+  $onInit() {
+    console.log('hola');
+    this.$http.get('/api/categories').then(response => {
+      console.log(response.data);
+      this.categories = response.data;
+    });
   }
 
   addJob(form) {
