@@ -3,6 +3,7 @@
   p.job--company {{ vm.job.company }}
   p.job--category {{ vm.job._category.name }}
   p.job--desc {{ vm.job.desc }}
-  p.job--url {{ vm.job.url }}
+  a.job--url(href='{{ vm.job.url }}') Apply
+  
   a(ng-href='/jobs/{{ vm.job._id }}/edit') Edit
   a(ng-href='#', ng-click='vm.deleteJob()') Delete
